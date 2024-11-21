@@ -1,0 +1,307 @@
+<html><head><base href="https://example.com">
+<style>
+:root {
+  --primary: #2196f3;
+  --primary-dark: #1976d2;
+  --bg: linear-gradient(135deg, #000000, #ff0000);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stars styles */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+/* Moon styles */
+.moon {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 50px #ffffff, 0 0 100px #ffffff80;
+  animation: moonGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+  from {
+    box-shadow: 0 0 50px #ffffff, 0 0 100px #ffffff80;
+  }
+  to {
+    box-shadow: 0 0 70px #ffffff, 0 0 120px #ffffff80;
+  }
+}
+
+.moon::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  box-shadow: 15px 25px 0 5px rgba(255, 255, 255, 0.6),
+              35px 15px 0 2px rgba(255, 255, 255, 0.7);
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.5s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  text-align: center;
+  color: #ff0000;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ff0000;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  color: #ff0000;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+button {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.forgot-password a {
+  color: #ff0000;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.social-login {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.social-login p {
+  color: #ff0000;
+  margin-bottom: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+</style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="moon"></div>
+  <div class="login-container">
+    <h1>Welcome Back</h1>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit">Log In</button>
+    </form>
+    <div class="forgot-password">
+      <a href="https://example.com/reset-password">Forgot Password?</a>
+    </div>
+    <div class="social-login">
+      <p>Or login with</p>
+      <div class="social-icons">
+        <div class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#DB4437">
+            <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12c6.627 0 12-5.373 12-12S18.627 0 12 0zm.14 19.018c-3.868 0-7-3.14-7-7.018c0-3.878 3.132-7.018 7-7.018c1.89 0 3.47.697 4.682 1.829l-1.974 1.978c-.532-.511-1.466-1.108-2.708-1.108c-2.31 0-4.187 1.914-4.187 4.319c0 2.405 1.877 4.319 4.187 4.319c2.693 0 3.689-1.941 3.847-2.938h-3.847v-2.601h6.458c.06.34.107.694.107 1.152c0 3.919-2.623 6.086-6.565 6.086z"/>
+          </svg>
+        </div>
+        <div class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 5.989 4.388 10.952 10.125 11.854V15.47H7.078v-3.47h3.047V9.356c0-3.007 1.792-4.668 4.533-4.668c1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 22.952 24 17.989 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </div>
+        <div class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#000000">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+// Create stars
+function createStars() {
+  const starsContainer = document.querySelector('.stars');
+  const numberOfStars = 200;
+  
+  for (let i = 0; i < numberOfStars; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    
+    // Random position
+    const left = Math.random() * 100;
+    const top = Math.random() * 100;
+    
+    // Random size
+    const size = Math.random() * 3;
+    
+    // Random twinkle duration
+    const duration = 2 + Math.random() * 3;
+    
+    star.style.left = `${left}%`;
+    star.style.top = `${top}%`;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.setProperty('--duration', `${duration}s`);
+    
+    starsContainer.appendChild(star);
+  }
+}
+
+// Call createStars when the page loads
+createStars();
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  
+  // Here you would typically send the login credentials to your server
+  console.log('Login attempt:', { email, password });
+  
+  // Simulate login process
+  const button = this.querySelector('button');
+  button.textContent = 'Logging in...';
+  button.disabled = true;
+  
+  setTimeout(() => {
+    button.textContent = 'Log In';
+    button.disabled = false;
+    alert('Login functionality would be implemented here with actual backend integration');
+  }, 2000);
+});
+
+// Add ripple effect to social icons
+document.querySelectorAll('.social-icon').forEach(icon => {
+  icon.addEventListener('click', function() {
+    this.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      this.style.transform = 'scale(1)';
+    }, 100);
+  });
+});
+</script>
+
+</body>
+</html>
